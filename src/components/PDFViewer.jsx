@@ -36,6 +36,12 @@ const DownloadIcon = () => (
   </svg>
 );
 
+const ExternalLinkIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+  </svg>
+);
+
 const PDFViewer = ({ isOpen, onClose, pdfUrl: initialPdfUrl }) => {
   const [localPdf, setLocalPdf] = useState(null);
   const [scale, setScale] = useState(1);
@@ -137,6 +143,23 @@ const PDFViewer = ({ isOpen, onClose, pdfUrl: initialPdfUrl }) => {
               <DownloadIcon />
             </button>
 
+            {/* Open in New Tab Button */}
+            <button
+              onClick={() => {
+                if (displayPdf) {
+                  window.open(displayPdf, '_blank');
+                }
+              }}
+              className="jelly-button flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white/20 transition-colors text-white"
+              title="Abrir en nueva pestaña"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)'
+              }}
+            >
+              <ExternalLinkIcon />
+            </button>
+
             {/* Upload Button */}
             <label className="jelly-button flex items-center space-x-2 px-3 py-2 rounded-lg cursor-pointer hover:bg-white/20 transition-colors text-white" style={{
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -181,16 +204,17 @@ const PDFViewer = ({ isOpen, onClose, pdfUrl: initialPdfUrl }) => {
               >
                 <iframe
                   ref={iframeRef}
-                  src={displayPdf}
+                  src={`${displayPdf}#toolbar=0&navpanes=0&scrollbar=0`}
                   className="rounded-xl shadow-2xl"
                   style={{
                     width: '100%',
-                    height: '80vh',
+                    height: '75vh',
                     border: 'none',
                     borderRadius: '1rem',
                     boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)'
                   }}
                   title="PDF Viewer"
+                  type="application/pdf"
                 />
               </div>
               
@@ -206,7 +230,7 @@ const PDFViewer = ({ isOpen, onClose, pdfUrl: initialPdfUrl }) => {
                   backgroundColor: '#e0e5ec',
                   boxShadow: 'inset 2px 2px 4px #a3b1c6, inset -2px -2px 4px #ffffff'
                 }}>
-                  Documento cargado
+                  Documento: {displayPdf.split('/').pop()}
                 </span>
               </div>
             </div>

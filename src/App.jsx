@@ -5,6 +5,7 @@ import Article1 from './components/Article1';
 import Article2 from './components/Article2';
 import PDFViewer from './components/PDFViewer';
 import FlipCard from './components/FlipCard';
+import Building3D from './components/Building3D';
 
 const BookOpenIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,35 +75,34 @@ function App() {
               boxShadow: '8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff',
               padding: '4rem 2rem'
             }}>
-              <div className="relative z-10">
-                <div className="mb-8 flex justify-center">
-                  <div className="rounded-full p-6" style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    backdropFilter: 'blur(10px)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
-                  }}>
-                    <BookOpenIcon style={{ width: '80px', height: '80px', color: 'white' }} />
+              <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="flex-1 text-left">
+                  <div className="mb-6">
+                    <h1 className="text-5xl font-bold text-white mb-4">Revista Digital Interactiva</h1>
+                    <p className="text-xl text-white/90 max-w-2xl mb-8">
+                      Descubre nuestros artículos sobre tecnología, comunidad y ética digital con una experiencia innovadora
+                    </p>
+                  </div>
+                  <div className="flex gap-4 flex-wrap">
+                    <button
+                      onClick={() => setCurrentView('articles')}
+                      className="jelly-button flex items-center space-x-2 px-6 py-3 bg-white text-purple-600 rounded-xl font-medium hover:bg-gray-100 transition-colors"
+                    >
+                      <BookOpenIcon />
+                      <span>Explorar Artículos</span>
+                    </button>
+                    <button
+                      onClick={() => openPDFViewer('/documents/principios-eticos-original.pdf')}
+                      className="jelly-button flex items-center space-x-2 px-6 py-3 bg-purple-800 text-white rounded-xl font-medium hover:bg-purple-900 transition-colors"
+                    >
+                      <ExternalLinkIcon />
+                      <span>Visor PDF</span>
+                    </button>
                   </div>
                 </div>
-                <h1 className="text-5xl font-bold text-white mb-4">Revista Digital Interactiva</h1>
-                <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-                  Descubre nuestros artículos sobre tecnología, comunidad y ética digital con una experiencia innovadora
-                </p>
-                <div className="flex justify-center gap-4 flex-wrap">
-                  <button
-                    onClick={() => setCurrentView('articles')}
-                    className="jelly-button flex items-center space-x-2 px-6 py-3 bg-white text-purple-600 rounded-xl font-medium hover:bg-gray-100 transition-colors"
-                  >
-                    <BookOpenIcon />
-                    <span>Explorar Artículos</span>
-                  </button>
-                  <button
-                    onClick={() => openPDFViewer('/documents/principios-eticos.pdf')}
-                    className="jelly-button flex items-center space-x-2 px-6 py-3 bg-purple-800 text-white rounded-xl font-medium hover:bg-purple-900 transition-colors"
-                  >
-                    <ExternalLinkIcon />
-                    <span>Visor PDF</span>
-                  </button>
+                
+                <div className="flex-1 flex justify-center">
+                  <Building3D />
                 </div>
               </div>
               
@@ -351,49 +351,43 @@ function App() {
                 <FlipCard 
                   name="Cordero Montoya Ximena"
                   description="Autora del proyecto Informa mi Comunidad y colaboradora en principios éticos digitales."
-                  documentUrl="/documents/Derechos de publicación.docx.pdf"
+                  documentUrl="/documents/autor-6-ximena.pdf"
                   onOpenDocument={openPDFViewer}
                 />
                 <FlipCard 
                   name="Rodríguez Calderón Manuel"
                   description="Coautor del proyecto de comunidad y experto en accesibilidad tecnológica."
-                  documentUrl="/documents/Derechos de publicación Manu.docx.pdf"
+                  documentUrl="/documents/autor-4-manuel.pdf"
                   onOpenDocument={openPDFViewer}
                 />
                 <FlipCard 
                   name="Morales Piña Keyra"
                   description="Investigadora en principios éticos y tecnología responsable."
-                  documentUrl="/documents/Derechos de publicación.docx (1).pdf"
+                  documentUrl="/documents/autor-7-keyra.pdf"
                   onOpenDocument={openPDFViewer}
                 />
                 <FlipCard 
                   name="Miranda Huerta Ana Karen"
                   description="Especialista en diseño de interfaces accesibles y用户体验."
-                  documentUrl="/documents/Derechos de publicación Ana Karen.docx.pdf"
+                  documentUrl="/documents/autor-1-ana-karen.pdf"
                   onOpenDocument={openPDFViewer}
                 />
                 <FlipCard 
                   name="Segura Segura Jael Sebastian"
                   description="Desarrollador de tecnologías de reconocimiento facial y voz."
-                  documentUrl="/documents/Derechos de publicación Jael.docx.pdf"
+                  documentUrl="/documents/autor-5-jael.pdf"
                   onOpenDocument={openPDFViewer}
                 />
                 <FlipCard 
                   name="Arriaga Pérez Diego Álvaro"
                   description="Experto en seguridad digital y protección de datos personales."
-                  documentUrl="/documents/Derechos de publicación Diego.docx.pdf"
+                  documentUrl="/documents/autor-2-diego.pdf"
                   onOpenDocument={openPDFViewer}
                 />
                 <FlipCard 
                   name="Brayan Eduardo Heras Mireles"
                   description="Colaborador en el proyecto de principios éticos y tecnología."
-                  documentUrl="/documents/Derechos de publicación Edu.docx.pdf"
-                  onOpenDocument={openPDFViewer}
-                />
-                <FlipCard 
-                  name="Keira Morales Piña"
-                  description="Investigadora en ética digital y responsabilidad tecnológica."
-                  documentUrl="/documents/principios-eticos.pdf"
+                  documentUrl="/documents/autor-3-brayan.pdf"
                   onOpenDocument={openPDFViewer}
                 />
               </div>
